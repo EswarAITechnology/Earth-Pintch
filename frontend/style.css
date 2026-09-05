@@ -1,0 +1,865 @@
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  background: #000;
+
+  touch-action: none;
+
+  overscroll-behavior: none;
+
+  font-family:
+    "Segoe UI",
+    system-ui,
+    sans-serif;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+body {
+  color: #00eaff;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      #032733 0%,
+      #01141c 22%,
+      #00070c 55%,
+      #000 100%
+    );
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.background {
+  position: fixed;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+
+/* GRID */
+
+.grid {
+  position: absolute;
+
+  inset: -50%;
+
+  background-image:
+    linear-gradient(
+      rgba(0, 229, 255, 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 229, 255, 0.08) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    45px 45px;
+
+  transform:
+    perspective(500px)
+    rotateX(62deg)
+    translateY(20%);
+
+  transform-origin:
+    center bottom;
+
+  opacity: 0.35;
+}
+
+
+/* SCANLINES */
+
+.scanlines {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 3px,
+      rgba(0, 229, 255, 0.025) 4px
+    );
+
+  mix-blend-mode: screen;
+}
+
+
+/* =========================================================
+   GLOW
+   ========================================================= */
+
+.glow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(90px);
+
+  opacity: 0.25;
+}
+
+.glow-1 {
+  width: 40vw;
+  height: 40vw;
+
+  top: 5%;
+  left: 20%;
+
+  background: #00eaff;
+}
+
+.glow-2 {
+  width: 30vw;
+  height: 30vw;
+
+  right: -5%;
+  bottom: 5%;
+
+  background: #0066ff;
+}
+
+
+/* =========================================================
+   STARS
+   ========================================================= */
+
+.stars {
+  position: absolute;
+
+  inset: 0;
+}
+
+.star {
+  position: absolute;
+
+  width: 2px;
+  height: 2px;
+
+  background: #a9f8ff;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 6px #00eaff;
+
+  animation:
+    starPulse
+    2s
+    infinite
+    ease-in-out;
+}
+
+@keyframes starPulse {
+
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+}
+
+
+/* =========================================================
+   APP
+   ========================================================= */
+
+.app {
+  position: relative;
+
+  z-index: 5;
+
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   STAGE
+   ========================================================= */
+
+#stage {
+  position: relative;
+
+  flex: 1;
+
+  min-height: 55vh;
+
+  overflow: hidden;
+
+  touch-action: none;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(0, 229, 255, 0.05),
+      transparent 55%
+    );
+}
+
+
+/* =========================================================
+   VIDEO
+   ========================================================= */
+
+#video {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  opacity: 0.04;
+
+  transform: scaleX(-1);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CANVASES
+   ========================================================= */
+
+#hand-canvas,
+#earth-canvas {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+#hand-canvas {
+  pointer-events: none;
+
+  z-index: 3;
+
+  transform: scaleX(-1);
+}
+
+#earth-canvas {
+  z-index: 2;
+
+  touch-action: none;
+}
+
+
+/* =========================================================
+   HUD
+   ========================================================= */
+
+.top-hud {
+  position: absolute;
+
+  top: 18px;
+  left: 18px;
+  right: 18px;
+
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  align-items: flex-start;
+
+  z-index: 20;
+
+  pointer-events: none;
+}
+
+
+.hud-box {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding:
+    9px 13px;
+
+  background:
+    rgba(0, 15, 22, 0.65);
+
+  border:
+    1px solid
+    rgba(0, 229, 255, 0.35);
+
+  border-radius: 7px;
+
+  box-shadow:
+    0 0 20px
+    rgba(0, 229, 255, 0.08);
+
+  backdrop-filter:
+    blur(10px);
+}
+
+
+.system-box strong {
+  display: block;
+
+  font-size: 13px;
+
+  letter-spacing: 2px;
+}
+
+.system-box small {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 8px;
+
+  letter-spacing: 1.5px;
+
+  opacity: 0.55;
+}
+
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #00ff9d;
+
+  box-shadow:
+    0 0 12px #00ff9d;
+
+  animation:
+    statusPulse
+    1.4s
+    infinite;
+}
+
+@keyframes statusPulse {
+
+  50% {
+    opacity: 0.3;
+  }
+
+}
+
+
+/* =========================================================
+   EARTH INFO
+   ========================================================= */
+
+.earth-info {
+  position: absolute;
+
+  left: 22px;
+  bottom: 90px;
+
+  z-index: 20;
+
+  padding: 12px 15px;
+
+  min-width: 150px;
+
+  border-left:
+    2px solid #00eaff;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 229, 255, 0.08),
+      transparent
+    );
+
+  pointer-events: none;
+}
+
+
+.info-title {
+  font-size: 8px;
+
+  letter-spacing: 2px;
+
+  opacity: 0.6;
+
+  margin-bottom: 8px;
+}
+
+
+.info-line {
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  gap: 20px;
+
+  font-size: 9px;
+
+  margin-top: 5px;
+}
+
+.info-line strong {
+  color: #fff;
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   TOUCH HINT
+   ========================================================= */
+
+.touch-hint {
+  position: absolute;
+
+  left: 50%;
+  bottom: 24px;
+
+  transform:
+    translateX(-50%);
+
+  z-index: 25;
+
+  padding:
+    9px 15px;
+
+  border:
+    1px solid
+    rgba(0, 229, 255, 0.35);
+
+  border-radius: 30px;
+
+  background:
+    rgba(0, 10, 16, 0.65);
+
+  backdrop-filter:
+    blur(8px);
+
+  font-size: 10px;
+
+  letter-spacing: 1px;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+
+.touch-hint span {
+  margin-right: 5px;
+
+  font-size: 15px;
+}
+
+.touch-hint.hidden {
+  opacity: 0;
+
+  transform:
+    translateX(-50%)
+    translateY(10px);
+}
+
+
+/* =========================================================
+   RETICLE
+   ========================================================= */
+
+.reticle {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 190px;
+  height: 190px;
+
+  transform:
+    translate(-50%, -50%);
+
+  z-index: 10;
+
+  pointer-events: none;
+
+  opacity: 0.4;
+}
+
+
+.reticle-corner {
+  position: absolute;
+
+  width: 20px;
+  height: 20px;
+
+  border-color: #00eaff;
+
+  border-style: solid;
+}
+
+.tl {
+  left: 0;
+  top: 0;
+
+  border-width:
+    1px 0 0 1px;
+}
+
+.tr {
+  right: 0;
+  top: 0;
+
+  border-width:
+    1px 1px 0 0;
+}
+
+.bl {
+  left: 0;
+  bottom: 0;
+
+  border-width:
+    0 0 1px 1px;
+}
+
+.br {
+  right: 0;
+  bottom: 0;
+
+  border-width:
+    0 1px 1px 0;
+}
+
+
+.reticle-cross {
+  position: absolute;
+
+  background:
+    rgba(0, 229, 255, 0.3);
+}
+
+.horizontal {
+  width: 100%;
+  height: 1px;
+
+  top: 50%;
+}
+
+.vertical {
+  height: 100%;
+  width: 1px;
+
+  left: 50%;
+}
+
+
+/* =========================================================
+   BOTTOM HUD
+   ========================================================= */
+
+.bottom-hud {
+  position: absolute;
+
+  bottom: 14px;
+
+  right: 18px;
+
+  z-index: 20;
+
+  display: flex;
+
+  gap: 15px;
+
+  pointer-events: none;
+}
+
+.bottom-hud > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+  text-align: right;
+
+  font-size: 9px;
+}
+
+.hud-label {
+  opacity: 0.45;
+
+  font-size: 7px;
+
+  letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   CHAT
+   ========================================================= */
+
+#chat {
+  height: 36vh;
+
+  max-height: 390px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  background:
+    rgba(0, 7, 12, 0.92);
+
+  border-top:
+    1px solid
+    rgba(0, 229, 255, 0.18);
+
+  backdrop-filter:
+    blur(15px);
+
+  touch-action: auto;
+}
+
+
+/* =========================================================
+   MESSAGES
+   ========================================================= */
+
+#messages {
+  flex: 1;
+
+  overflow-y: auto;
+
+  padding: 13px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 9px;
+
+  touch-action: pan-y;
+}
+
+.message {
+  max-width: 88%;
+
+  padding:
+    10px 13px;
+
+  border-radius: 10px;
+
+  font-size: 13px;
+
+  line-height: 1.45;
+}
+
+.message.friday {
+  align-self: flex-start;
+
+  color: #bdf8ff;
+
+  background:
+    rgba(0, 35, 47, 0.55);
+
+  border:
+    1px solid
+    rgba(0, 229, 255, 0.18);
+}
+
+.message.user {
+  align-self: flex-end;
+
+  color: #fff;
+
+  background:
+    rgba(0, 92, 120, 0.6);
+}
+
+.message.system {
+  align-self: center;
+
+  color: #ffc44d;
+
+  font-size: 11px;
+}
+
+.message-label {
+  display: block;
+
+  font-size: 8px;
+
+  letter-spacing: 1.5px;
+
+  margin-bottom: 4px;
+
+  opacity: 0.5;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+#input-row {
+  display: flex;
+
+  gap: 7px;
+
+  padding: 9px;
+
+  border-top:
+    1px solid
+    rgba(0, 229, 255, 0.1);
+
+  touch-action: auto;
+}
+
+#user-input {
+  flex: 1;
+
+  min-width: 0;
+
+  background:
+    rgba(0, 18, 25, 0.9);
+
+  color: #00eaff;
+
+  border:
+    1px solid
+    rgba(0, 229, 255, 0.3);
+
+  border-radius: 8px;
+
+  padding:
+    10px 12px;
+
+  outline: none;
+
+  font-size: 14px;
+}
+
+#user-input::placeholder {
+  color: #477780;
+}
+
+
+button {
+  width: 45px;
+  height: 45px;
+
+  border:
+    1px solid
+    rgba(0, 229, 255, 0.7);
+
+  border-radius: 8px;
+
+  background:
+    rgba(0, 42, 54, 0.8);
+
+  color: #00eaff;
+
+  font-size: 17px;
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+button:active,
+button.active {
+  background: #00eaff;
+
+  color: #001018;
+
+  box-shadow:
+    0 0 18px
+    rgba(0, 229, 255, 0.5);
+}
+
+button:disabled {
+  opacity: 0.35;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .top-hud {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+  }
+
+  .hud-box {
+    padding: 7px 9px;
+  }
+
+  .earth-info {
+    left: 10px;
+    bottom: 65px;
+  }
+
+  .bottom-hud {
+    right: 10px;
+    bottom: 10px;
+
+    gap: 9px;
+  }
+
+  .reticle {
+    width: 145px;
+    height: 145px;
+  }
+
+  #chat {
+    height: 40vh;
+  }
+
+}
