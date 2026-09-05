@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+  >
+
+  <title>FRIDAY — Holographic Earth</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       HOLOGRAPHIC BACKGROUND
+       ===================================================== -->
+
+  <div class="background">
+
+    <div class="grid"></div>
+
+    <div class="scanlines"></div>
+
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
+    <div class="stars" id="stars"></div>
+
+  </div>
+
+
+  <!-- =====================================================
+       MAIN HUD
+       ===================================================== -->
+
+  <main class="app">
+
+    <section id="stage">
+
+      <!-- CAMERA -->
+      <video
+        id="video"
+        autoplay
+        playsinline
+        muted
+      ></video>
+
+      <!-- HAND TRACKING -->
+      <canvas id="hand-canvas"></canvas>
+
+      <!-- EARTH -->
+      <canvas id="earth-canvas"></canvas>
+
+
+      <!-- TOP HUD -->
+
+      <div class="top-hud">
+
+        <div class="hud-box system-box">
+
+          <span class="status-dot"></span>
+
+          <div>
+            <strong>FRIDAY</strong>
+            <small>HOLOGRAPHIC CORE</small>
+          </div>
+
+        </div>
+
+
+        <div class="hud-box">
+
+          <span id="gesture-status">
+            READY
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- EARTH INFORMATION -->
+
+      <div class="earth-info">
+
+        <div class="info-title">
+          PLANETARY VISUALIZATION
+        </div>
+
+        <div class="info-line">
+          <span>ZOOM</span>
+          <strong id="zoom-value">3.4x</strong>
+        </div>
+
+        <div class="info-line">
+          <span>CONTROL</span>
+          <strong id="control-value">IDLE</strong>
+        </div>
+
+      </div>
+
+
+      <!-- TOUCH INDICATOR -->
+
+      <div
+        id="touch-hint"
+        class="touch-hint"
+      >
+        <span>🤏</span>
+        PINCH SCREEN TO ZOOM
+      </div>
+
+
+      <!-- RETICLE -->
+
+      <div class="reticle">
+
+        <span class="reticle-corner tl"></span>
+        <span class="reticle-corner tr"></span>
+        <span class="reticle-corner bl"></span>
+        <span class="reticle-corner br"></span>
+
+        <span class="reticle-cross horizontal"></span>
+        <span class="reticle-cross vertical"></span>
+
+      </div>
+
+
+      <!-- BOTTOM HUD -->
+
+      <div class="bottom-hud">
+
+        <div>
+          <span class="hud-label">HAND</span>
+          <span id="hand-state">SEARCHING</span>
+        </div>
+
+        <div>
+          <span class="hud-label">TOUCH</span>
+          <span id="touch-state">READY</span>
+        </div>
+
+        <div>
+          <span class="hud-label">RENDER</span>
+          <span id="fps-state">60 FPS</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         CHAT
+         ================================================= -->
+
+    <section id="chat">
+
+      <div id="messages">
+
+        <div class="message friday">
+          <span class="message-label">
+            FRIDAY
+          </span>
+
+          Online. Holographic Earth interface ready.
+          Use your hand pinch or two fingers on the
+          touchscreen to zoom.
+        </div>
+
+      </div>
+
+
+      <div id="input-row">
+
+        <input
+          id="user-input"
+          type="text"
+          placeholder="Talk to FRIDAY..."
+          autocomplete="off"
+        >
+
+        <button id="mic-btn">
+          🎤
+        </button>
+
+        <button id="send-btn">
+          ➤
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       LIBRARIES
+       ===================================================== -->
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js">
+  </script>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js">
+  </script>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js">
+  </script>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js">
+  </script>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
